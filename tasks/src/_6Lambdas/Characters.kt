@@ -3,52 +3,52 @@ package _6Lambdas
 import _6Lambdas.Gender.FEMALE
 import _6Lambdas.Gender.MALE
 
-class Character(val name: String, val age: Int, val gender: Gender?)
+class Hero(val name: String, val age: Int, val gender: Gender?)
 enum class Gender { MALE, FEMALE }
 
 fun main(args: Array<String>) {
-    val characters = listOf(
-            Character("The Captain", 60, MALE),
-            Character("Frenchy", 42, MALE),
-            Character("The Kid", 9, null),
-            Character("Lady Lauren", 29, FEMALE),
-            Character("First Mate", 29, MALE),
-            Character("Sir Stephen", 37, MALE))
+    val heroes = listOf(
+            Hero("The Captain", 60, MALE),
+            Hero("Frenchy", 42, MALE),
+            Hero("The Kid", 9, null),
+            Hero("Lady Lauren", 29, FEMALE),
+            Hero("First Mate", 29, MALE),
+            Hero("Sir Stephen", 37, MALE))
 
-    println(characters.last().name)
+    println(heroes.last().name)
 
-    println(characters.firstOrNull { it.age == 30 }?.name)
-    println(characters.last { it.age == 29 }.name)
+    println(heroes.firstOrNull { it.age == 30 }?.name)
+    println(heroes.last { it.age == 29 }.name)
 
-    println(characters.map { it.age }.distinct().size)
-    println(characters.filter { it.age < 30 }.size)
+    println(heroes.map { it.age }.distinct().size)
+    println(heroes.filter { it.age < 30 }.size)
 
-    val (youngest, oldest) = characters.partition { it.age < 30 }
+    val (youngest, oldest) = heroes.partition { it.age < 30 }
     println(oldest.size)
     println(youngest.size)
 
-    println(characters.maxBy { it.age }?.name)
+    println(heroes.maxBy { it.age }?.name)
 
-    println(characters.all { it.age < 50 })
-    println(characters.any { it.gender == FEMALE })
+    println(heroes.all { it.age < 50 })
+    println(heroes.any { it.gender == FEMALE })
 
 
-    val mapByAge: Map<Int, List<Character>> = characters.groupBy { it.age }
+    val mapByAge: Map<Int, List<Hero>> = heroes.groupBy { it.age }
     val (age, group) = mapByAge.maxBy { (_, group) -> group.size }!!
     println(age)
     println(group.size)
 
-    val mapByName: Map<String, Character> = characters.associateBy { it.name }
+    val mapByName: Map<String, Hero> = heroes.associateBy { it.name }
     println(mapByName["Frenchy"]?.age)
     println(mapByName.getValue("Frenchy").age)
     println(mapByName["unknown"])
 
-    val unknownCharacter = Character("Unknown", 0, null)
+    val unknownCharacter = Hero("Unknown", 0, null)
     println(mapByName.getOrElse("unknown") { unknownCharacter }.age)
 
-    val (first, second) = characters
-            .flatMap { first -> characters.map { second -> first to second } }
-            .maxBy { (first, second) -> first.age - second.age }!!
+    val (first, second) = heroes
+            .flatMap { heroes.map { hero -> it to hero } }
+            .maxBy { it.first.age - it.second.age }!!
     println(first.name)
     println(second.name)
 }
