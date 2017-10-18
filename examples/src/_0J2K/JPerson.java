@@ -2,7 +2,7 @@ package _0J2K;
 
 public class JPerson {
     private final String name;
-    private final int age;
+    private int age;
 
     public JPerson(String name, int age) {
         this.name = name;
@@ -15,5 +15,9 @@ public class JPerson {
 
     public int getAge() {
         return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
