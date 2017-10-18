@@ -17,3 +17,9 @@ fun recognize(c: Char) = when (c) {
     in 'a'..'z', in 'A'..'Z' -> "It's a letter!"
     else -> "I don't know…​"
 }
+
+fun rangeOfStrings() {
+    val fromAToK = "a".."k"
+    println("ball" in fromAToK) // true
+    println("zoo" in fromAToK)  // false
+}
