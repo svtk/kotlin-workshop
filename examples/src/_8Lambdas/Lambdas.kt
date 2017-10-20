@@ -5,6 +5,11 @@ fun basicSyntax() {
 
     val sum1: (Int, Int) -> Int = { x, y -> x + y }
 
+    val multilineLambda =  { x: Int, y: Int ->
+        println("Computing...")
+        x + y
+    }
+
     println(sum(1, 2)) // 3
 }
 
