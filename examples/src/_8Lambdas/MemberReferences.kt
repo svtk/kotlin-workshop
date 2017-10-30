@@ -3,11 +3,19 @@ package memberReference
 class Person(val name: String, val age: Int)
 
 fun main(args: Array<String>) {
-    val list = listOf(
+    val people = listOf(
             Person("Alice", 29),
             Person("Bob", 31))
 
-    list.groupBy { it.age }
+    people.maxBy { it.age }
 
-    list.groupBy(Person::age)
+    people.maxBy(Person::age)
+
+    val list = listOf(1, 2, 3, 4)
+
+    list.any(::isEven)
+
+    list.filter(::isEven)
 }
+
+fun isEven(i: Int): Boolean = i % 2 == 0

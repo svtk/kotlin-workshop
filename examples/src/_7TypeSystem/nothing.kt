@@ -1,7 +1,7 @@
 package _7TypeSystem
 
 fun example1(condition: Boolean, expression: Int) {
-    val result = if (condition) {
+    val result: Int = if (condition) {
         expression
     } else {
         fail("error")
