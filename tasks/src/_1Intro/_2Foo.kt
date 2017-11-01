@@ -11,6 +11,7 @@ fun foo2(): String {
 }
 
 fun main(args: Array<String>) {
+    println("=====")
     println("First $foo1, second $foo1")
     println("------")
     println("First ${foo2()}, second ${foo2()}")

@@ -11,6 +11,8 @@ fun main(args: Array<String>) {
     println(people.filter { it.age > 30 })
     println(people.map { it.name })
 
+    println(people.maxBy { it.age })
+
     println(people.any { it.name.startsWith("A") })
 
     println(people.find { it.age > 30 })
@@ -26,5 +28,9 @@ fun main(args: Array<String>) {
     println(people.associateBy { it.name })
     println(people.associateBy { it.age })
 
-    println(listOf("abc", "123").flatMap { it.toCharArray().toList() })
+    println(listOf("abc", "123").map {
+        it.toCharArray().toList() })
+
+    println(listOf("abc", "123").flatMap {
+        it.toCharArray().toList() })
 }

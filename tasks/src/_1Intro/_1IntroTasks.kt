@@ -14,10 +14,16 @@ fun main(args: Array<String>) {
     // (abc)
 
     println("Kotlin" in "Java".."Scala") // true
-
     println("Kotlin" in setOf("Java", "Scala"))  // false
 
+    val list = mutableListOf("Kotlin", "Java", "Scala")
+    list.sort()
+    println(list)
+
     for (c in '0' until '9') {
+        print(c)
+    }
+    for (c in '0'..'8') {
         print(c)
     }
     // 012345678

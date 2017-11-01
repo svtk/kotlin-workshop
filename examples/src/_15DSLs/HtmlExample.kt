@@ -4,7 +4,12 @@ package _15DSLs
 annotation class HtmlDsl
 
 open class Tag(val name: String) {
-    protected val children = mutableListOf<Tag>()
+    private val children = mutableListOf<Tag>()
+
+    protected fun <T: Tag> doInit(child: T, init: T.() -> Unit) {
+        child.init()
+        children.add(child)
+    }
 
     override fun toString() =
             "<$name>${children.joinToString("")}</$name>"
@@ -18,20 +23,12 @@ fun table(init: TABLE.() -> Unit): TABLE {
 
 @HtmlDsl
 class TABLE : Tag("table") {
-    fun tr(init: TR.() -> Unit) {
-        val child = TR()
-        child.init()
-        children.add(child)
-    }
+    fun tr(init: TR.() -> Unit) = doInit(TR(), init)
 }
 
 @HtmlDsl
 class TR : Tag("tr") {
-    fun td(init: TD.() -> Unit) {
-        val child = TD()
-        child.init()
-        children.add(child)
-    }
+    fun td(init: TD.() -> Unit) = doInit(TD(), init)
 }
 
 @HtmlDsl
