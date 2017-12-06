@@ -14,6 +14,8 @@ fun main(args: Array<String>) {
     // (abc)
 
     println("Kotlin" in "Java".."Scala") // true
+    // "Java" <= "Kotlin" && "Kotlin" <= "Scala"
+
     println("Kotlin" in setOf("Java", "Scala"))  // false
 
     val list = mutableListOf("Kotlin", "Java", "Scala")

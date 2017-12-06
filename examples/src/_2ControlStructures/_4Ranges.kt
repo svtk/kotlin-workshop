@@ -8,6 +8,9 @@ fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
 fun isNotDigit(c: Char) = c !in '0'..'9'
 
 fun main(args: Array<String>) {
+    "abc" <= "cba"
+    "abc".compareTo("cba")
+
     println(isLetter('q'))     // true
     println(isNotDigit('x'))   // true
 }
